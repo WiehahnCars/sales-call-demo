@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -24,7 +23,7 @@ if not st.session_state.logged_in:
     with col2:
         st.title("Welcome to Ithemba Call Centre")
         st.subheader("Log in to continue")
-        if st.button("🔓 Log In"):
+        if st.button("Sign in"):
             st.session_state.logged_in = True
     st.stop()
 
@@ -38,14 +37,33 @@ selection = st.sidebar.radio("📂 Navigation", [
     "Business Resources"
 ])
 
-# === Theme Toggle ===
-theme_toggle = st.sidebar.selectbox("🌓 Theme", ["Light", "Dark"])
-if theme_toggle == "Dark":
-    st.markdown("<style>body { background-color: #111; color: white; }</style>", unsafe_allow_html=True)
+# === Force Dark Theme ===
+st.markdown(
+    """
+    <style>
+    body, .stApp {
+        background-color: #111 !important;
+        color: #fff !important;
+    }
+    .css-1d391kg, .css-1d391kg .css-1v0mbdj, .css-1d391kg .css-1v0mbdj .css-1cpxqw2 {
+        background-color: #111 !important;
+    }
+    .stSidebar, .css-6qob1r, .css-1d391kg {
+        background-color: #111 !important;
+        color: #fff !important;
+    }
+    .stSidebar .css-1v0mbdj, .stSidebar .css-1cpxqw2 {
+        background-color: #111 !important;
+        color: #fff !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # === Upload Tab ===
 if selection == "Upload & Transcribe":
-    st.title("📤 Upload & Transcribe")
+    st.title("Upload & Transcribe")
     live_calls = random.randint(1, 5)
     st.metric("📞 Live Calls in Progress", live_calls)
 
@@ -59,7 +77,7 @@ if selection == "Upload & Transcribe":
 
     if uploaded_file:
         st.success("Audio file uploaded successfully!")
-        if st.button("📝 Transcribe & Analyse"):
+        if st.button("Transcribe & Analyse"):
             with st.spinner("Processing audio..."):
                 time.sleep(2)
             st.subheader("🗣 Transcript")
@@ -74,7 +92,7 @@ Agent: Yes, R2,500 before delivery.
 
 # === Live Call Analysis Tab ===
 elif selection == "Live Call Analysis":
-    st.title("📡 Live Call Monitoring")
+    st.title("Live Call Monitoring")
     st.caption("Real-time overview of ongoing calls")
 
     df_live = pd.DataFrame([
@@ -104,7 +122,7 @@ elif selection == "Client Personas":
 
 # === Team Tab ===
 elif selection == "Team":
-    st.title("👩‍💼 Team Overview")
+    st.title("Team Overview")
 
     df_team = pd.DataFrame([
         {"Name": "Lindiwe M.", "Role": "Sales Agent", "Manager": "S. Dlamini", "Join Date": "2022-03-01"},
