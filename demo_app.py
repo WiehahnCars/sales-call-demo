@@ -17,6 +17,28 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
+    st.markdown(
+        """
+        <style>
+        .stApp, body {
+            background-color: #111 !important;
+            color: #fff !important;
+        }
+        .block-container {
+            background-color: #111 !important;
+        }
+        .stButton>button {
+            background-color: #222 !important;
+            color: #fff !important;
+            border: 1px solid #444 !important;
+        }
+        .stImage img {
+            background: transparent !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
     col1, col2 = st.columns([1, 2])
     with col1:
         st.image("logo.png", width=160)
@@ -28,7 +50,7 @@ if not st.session_state.logged_in:
     st.stop()
 
 # === Sidebar Navigation ===
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg", width=100)
+st.sidebar.image("logo.png", width=100)
 selection = st.sidebar.radio("📂 Navigation", [
     "Upload & Transcribe",
     "Live Call Analysis",
