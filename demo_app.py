@@ -470,7 +470,7 @@ elif selection == "🧑‍🤝‍🧑 Team":
         }
     ])
 
-    st.subheader("📋 Agent Overview")
+    st.subheader("Agent Overview")
     st.dataframe(agent_data.drop(columns=["Last Week Score", "This Week Score"]), use_container_width=True)
 
     st.divider()
@@ -499,10 +499,11 @@ elif selection == "🧑‍🤝‍🧑 Team":
 
     st.divider()
 
-    st.subheader("📈 Performance Trend Summary")
+    st.subheader("Performance Trend Summary")
     trend_chart = pd.DataFrame({
         "Agent": ["Lindiwe", "Eddie", "Neo"],
-        "Last Week": [76, 89, 82],
+        "Two weeks ago": [80, 82, 75],
+        "Last week": [76, 89, 82],
         "This Week": [84, 81, 90]
     })
 
