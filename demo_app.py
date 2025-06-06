@@ -128,7 +128,7 @@ elif selection == "Live Call Analysis":
 
 # === Personas Tab ===
 elif selection == "Client Personas":
-    st.title("👥 Client Personas")
+    st.title("Client Personas")
     st.markdown("Overview of recognised customer types based on call insights.")
 
     personas = {
