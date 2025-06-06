@@ -20,12 +20,9 @@ if not st.session_state.logged_in:
     st.markdown(
         """
         <style>
-        .stApp, body {
-            background-color: #111 !important;
+        html, body, .stApp, .block-container {
+            background-color: #000 !important;
             color: #fff !important;
-        }
-        .block-container {
-            background-color: #111 !important;
         }
         .stButton>button {
             background-color: #222 !important;
