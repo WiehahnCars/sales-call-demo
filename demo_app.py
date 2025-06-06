@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import random
 import time
+from streamlit_autorefresh import st_autorefresh
 
 # === Page Config ===
 st.set_page_config(
@@ -83,7 +84,14 @@ st.markdown(
 # === Upload Tab ===
 if selection == "Upload & Transcribe":
     st.title("Upload & Transcribe")
-    live_calls = random.randint(1, 5)
+
+    # Auto-refresh every 2 seconds
+    st_autorefresh(interval=2000, key="call_count_refresher")
+
+    # Live call count logic
+    live_call_placeholder = st.empty()
+    live_count = random.randint(7, 15)
+    live_call_placeholder.metric("📞 Live Calls in Progress", live_count)
     st.metric("📞 Live Calls in Progress", live_calls)
 
     col1, col2, col3 = st.columns(3)
